@@ -7,6 +7,7 @@
 {% block main %}
     <form action="/" enctype=multipart/form-data method="post">
         <input name="file" type="file">
+        <input name="step" type="number" min="1" step="1">
         <button class="btn btn-primary" type="submit">Find Faces</button>
     </form>
 {% endblock %}

@@ -19,10 +19,13 @@ bp = Blueprint('application', __name__)
 def find():
     if request.method == 'POST':
         db = get_db()
+        
+        # Check if user entered "step"
+        #if not 
 
         # Check if user selected a file
         file = request.files['file']
-        if file.filename == '':
+        if not file.filename:
             flash('No video file uploaded')
             return redirect(request.url)
 
@@ -45,6 +48,12 @@ def find():
         # Load the video (OpenCV)
         video = cv2.VideoCapture(path)
 
+        # Get "step"
+        step = int(request.form.get("step"))
+
+        # Delete the video file
+        os.remove(path)
+
         # Get framerate (OpenCV)
         FPS = video.get(cv2.CAP_PROP_FPS)
         
@@ -60,8 +69,6 @@ def find():
         # Initialize arrays for a plot
         timeArray = []
         faceArray = []
-        
-        step = 5
 
         # Iterate over frames
         while True:
@@ -72,7 +79,6 @@ def find():
                     if not video.grab():
                         break
                     continue
-
             # Get frame
             frame = video.read()
             
@@ -95,10 +101,7 @@ def find():
             # Save faces
             faceArray.append(faceAmount)
 
-        return render_template('plot.html', FPS=FPS, step=step, i=i, faceArray=faceArray, timeArray=timeArray)
-        
-        # Delete file
-        os.remove(path)
-
+        return render_template('plot.html', FPS=FPS, step=step, faceArray=faceArray, timeArray=timeArray)
+        #return render_template('plot.html', FPS=FPS, step=step, faceArray=[1, 2, 1], timeArray=[1, 2, 3])
     
     return render_template('index.html')

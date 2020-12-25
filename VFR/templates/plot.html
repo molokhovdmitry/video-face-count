@@ -7,7 +7,30 @@
 {% block main %}
     <p>FPS: {{ FPS }}</p>
     <p>step: {{ step }}</p>
-    <p>i: {{ i }}</p>
-    <p>faceArray: {{ faceArray }}</p>
-    <p>timeArray: {{ timeArray }}</p>
+    <canvas id="chart" width="400" height="100"></canvas>
+    <script>
+        var ctx = document.getElementById('chart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ timeArray }},
+                datasets: [{
+                    label: '# of Faces',
+                    data: {{ faceArray }},
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    barPercentage: '1.0',
+                    categoryPercentage: '1.0'
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
 {% endblock %}
