@@ -39,68 +39,63 @@ def find():
         path = os.path.join(tempPath, filename)
         file.save(path)
         
-        """
-        if error is None:
-            # Video Face Recognition
+        # Video Face Recognition
+        # Check if the file is actually a video file
 
-            # Check if the file is a video file
+        # Load the video (OpenCV)
+        video = cv2.VideoCapture(path)
 
-            # Load the video (OpenCV)
-            video = cv2.VideoCapture(video)
+        # Get framerate (OpenCV)
+        FPS = video.get(cv2.CAP_PROP_FPS)
+        
+        # Get name
+        
+        # Get duration
 
-            # Get framerate (OpenCV)
-            FPS = video.get(cv2.CAP_PROP_FPS)
+        # Get dimensions
+        
+        # Initialize a frame counter
+        i = 0
+
+        # Initialize arrays for a plot
+        timeArray = []
+        faceArray = []
+        
+        step = 5
+
+        # Iterate over frames
+        while True:
+            # Skip "FPS * step" frames
+            if (i % (FPS * step) != 0) or i != 0:
+                for k in range(int((FPS * step) - 1)):
+                    i += 1
+                    if not video.grab():
+                        break
+                    continue
+
+            # Get frame
+            frame = video.read()
             
-            # Get name
-            
-            # Get duration
+            # Count frames
+            i += 1
 
-            # Get dimensions
-            
-            # Initialize a frame counter
-            i = 0
+            # Stop when no frames left
+            if not frame[0]:
+                break
 
-            # Initialize arrays for a plot
-            timeArray = []
-            faceArray = []
-            
-            step = 5
-            # Iterate over frames
-            while True:
-                # Skip "FPS * step" frames
-                if (i % (FPS * step) != 0) or i != 0:
-                    for k in range(int((FPS * step) - 1)):
-                        i += 1
-                        if not video.grab():
-                            break
-                        continue
+            # Save second
+            second = int(i / FPS)
+            timeArray.append(second)
 
-                # Get frame
-                frame = video.read()
-                
-                # Count frames
-                i += 1
+            # Find faces
+            face_locations = face_recognition.face_locations(frame[1])
 
-                # Stop when no frames left
-                if not frame[0]:
-                    break
+            faceAmount = len(face_locations)
 
-                # Save second
-                second = int(i / FPS)
-                timeArray.append(second)
+            # Save faces
+            faceArray.append(faceAmount)
 
-                # Print second
-                print("Second:", second, "Frame:", i)
-
-                # Find faces
-                face_locations = face_recognition.face_locations(frame[1])
-
-                faceAmount = len(face_locations)
-
-                # Save faces
-                faceArray.append(faceAmount)
-            return render_template('plot.html', FPS=FPS, step=step, i=i)
-        """
+        return render_template('plot.html', FPS=FPS, step=step, i=i, faceArray=faceArray, timeArray=timeArray)
         
         # Delete file
         os.remove(path)
