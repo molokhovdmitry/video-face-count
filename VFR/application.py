@@ -33,7 +33,10 @@ def find():
 
         # Upload file
         filename = secure_filename(file.filename)
-        path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+        tempPath = current_app.config['UPLOAD_FOLDER']
+        if not os.path.exists(tempPath):
+            os.makedirs(tempPath)
+        path = os.path.join(tempPath, filename)
         file.save(path)
         
         """
