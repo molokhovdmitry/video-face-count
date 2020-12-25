@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/styles.css" rel="stylesheet">
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <nav id="header" class="header border-bottom border-warning">
+        <a href="/" class="logo">VideoFaceRecognition</a>
+    </nav>
+
+    <main>
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+        
+        {% block main %}{% endblock %}
+    </main>
+
+</body>
+
+</html>
