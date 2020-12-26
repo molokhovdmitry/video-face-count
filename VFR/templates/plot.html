@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block main %}
+    <p>Name: {{ videoName }}</p>
+    <p>Duration: {{ duration }} seconds</p>
     <p>FPS: {{ FPS }}</p>
+    <p>Dimensions: {{ dimensions }}</p>
     <p>step: {{ step }}</p>
     <canvas id="chart" width="400" height="100"></canvas>
     <script>

@@ -7,6 +7,7 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 
+import ffmpeg
 import face_recognition, cv2
 from werkzeug.utils import secure_filename
 
@@ -49,27 +50,26 @@ def find():
         video = cv2.VideoCapture(path)
 
         # Get "step"
-        step = int(request.form.get("step"))
-
-        # Delete the video file
+        step = int(request.form.get('step'))
+        
+        # Get metadata
+        videoName = file.filename
+        FPS = int(video.get(cv2.CAP_PROP_FPS))
+        duration = str(round(float(ffmpeg.probe(path)['streams'][0]['duration'])))
+        width = ffmpeg.probe(path)['streams'][0]['width']
+        height = ffmpeg.probe(path)['streams'][0]['height']
+        dimensions = str(width) + "×" + str(height)
+        
+        # Delete video file
         os.remove(path)
 
-        # Get framerate (OpenCV)
-        FPS = video.get(cv2.CAP_PROP_FPS)
-        
-        # Get name
-        
-        # Get duration
-
-        # Get dimensions
-        
         # Initialize a frame counter
         i = 0
 
         # Initialize arrays for a plot
         timeArray = []
         faceArray = []
-
+        
         # Iterate over frames
         while True:
             # Skip "FPS * step" frames
@@ -96,12 +96,12 @@ def find():
             # Find faces
             face_locations = face_recognition.face_locations(frame[1])
 
+            # Save faces
             faceAmount = len(face_locations)
 
             # Save faces
             faceArray.append(faceAmount)
 
-        return render_template('plot.html', FPS=FPS, step=step, faceArray=faceArray, timeArray=timeArray)
-        #return render_template('plot.html', FPS=FPS, step=step, faceArray=[1, 2, 1], timeArray=[1, 2, 3])
+        return render_template('plot.html', videoName=videoName, duration=duration, FPS=FPS, dimensions=dimensions, step=step, faceArray=faceArray, timeArray=timeArray)
     
     return render_template('index.html')
