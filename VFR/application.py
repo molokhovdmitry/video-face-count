@@ -1,10 +1,9 @@
 import os
-import functools
 
 from flask.globals import current_app
 
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
+    Blueprint, flash, g, redirect, render_template, request
 )
 
 import ffmpeg
@@ -44,7 +43,6 @@ def find():
         file.save(path)
         
         # Video Face Recognition
-        # Check if the file is actually a video file
 
         # Load the video (OpenCV)
         video = cv2.VideoCapture(path)
@@ -52,7 +50,7 @@ def find():
         # Get "step"
         step = int(request.form.get('step'))
         
-        # Check metadata and check if the file is corrupted
+        # Get metadata and check if the file is corrupted
         try:
             videoName = file.filename.rsplit(".")[0]
             videoExtension = file.filename.rsplit(".")[1]
