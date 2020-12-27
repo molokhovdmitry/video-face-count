@@ -11,7 +11,7 @@ import face_recognition, cv2
 from werkzeug.utils import secure_filename
 
 from VFR.db import get_db
-from VFR.upload import allowed_file
+from VFR.helpers import allowed_file
 
 bp = Blueprint('application', __name__)
 
@@ -21,7 +21,9 @@ def find():
         db = get_db()
         
         # Check if user entered "step"
-        #if not 
+        if not request.form.get('step'):
+            flash('Enter "step"')
+            return redirect(request.url)
 
         # Check if user selected a file
         file = request.files['file']
@@ -119,3 +121,9 @@ def find():
         return render_template('plot.html', videoName=videoName, duration=duration, FPS=FPS, dimensions=dimensions, step=step, faceArray=faceArray, timeArray=timeArray)
     
     return render_template('index.html')
+
+# Function for file extension checking
+ALLOWED_EXTENSIONS = {'mp4', 'avi'}
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
