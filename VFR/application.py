@@ -52,15 +52,19 @@ def find():
         # Get "step"
         step = int(request.form.get('step'))
         
-        # Get metadata
-        videoName = file.filename.rsplit(".")[0]
-        videoExtension = file.filename.rsplit(".")[1]
-        FPS = int(video.get(cv2.CAP_PROP_FPS))
-        duration = str(round(float(ffmpeg.probe(path)['streams'][0]['duration'])))
-        width = ffmpeg.probe(path)['streams'][0]['width']
-        height = ffmpeg.probe(path)['streams'][0]['height']
-        dimensions = str(width) + "×" + str(height)
-        
+        # Check metadata and check if the file is corrupted
+        try:
+            videoName = file.filename.rsplit(".")[0]
+            videoExtension = file.filename.rsplit(".")[1]
+            FPS = int(video.get(cv2.CAP_PROP_FPS))
+            duration = str(round(float(ffmpeg.probe(path)['streams'][0]['duration'])))
+            width = ffmpeg.probe(path)['streams'][0]['width']
+            height = ffmpeg.probe(path)['streams'][0]['height']
+            dimensions = str(width) + "×" + str(height)
+        except:
+            flash("Corrupted file")
+            return redirect(request.url)
+
         # Delete video file
         os.remove(path)
 
