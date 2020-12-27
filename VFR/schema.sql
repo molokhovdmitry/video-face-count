@@ -3,10 +3,12 @@ DROP TABLE IF EXISTS faces;
 
 CREATE TABLE videos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    'name' TEXT NOT NULL,
+    name TEXT NOT NULL,
+    extension TEXT NOT NULL,
     duration INTEGER NOT NULL,
     FPS INTEGER NOT NULL,
-    dimensions TEXT NOT NULL
+    dimensions TEXT NOT NULL,
+    step INTEGER NOT NULL
 );
 
 CREATE TABLE frames (

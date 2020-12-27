@@ -53,7 +53,8 @@ def find():
         step = int(request.form.get('step'))
         
         # Get metadata
-        videoName = file.filename
+        videoName = file.filename.rsplit(".")[0]
+        videoExtension = file.filename.rsplit(".")[1]
         FPS = int(video.get(cv2.CAP_PROP_FPS))
         duration = str(round(float(ffmpeg.probe(path)['streams'][0]['duration'])))
         width = ffmpeg.probe(path)['streams'][0]['width']
@@ -69,6 +70,9 @@ def find():
         # Initialize arrays for a plot
         timeArray = []
         faceArray = []
+
+        # Initialize frame array for database
+        frameArray = []
         
         # Iterate over frames
         while True:
@@ -93,14 +97,22 @@ def find():
             second = int(i / FPS)
             timeArray.append(second)
 
+            # Save frame
+            frameArray.append(i)
+
             # Find faces
             face_locations = face_recognition.face_locations(frame[1])
 
-            # Save faces
+            # Save face amount
             faceAmount = len(face_locations)
-
-            # Save faces
             faceArray.append(faceAmount)
+
+        # Insert into database
+        db.execute('INSERT INTO videos (name, extension, duration, FPS, dimensions, step) VALUES (?, ?, ?, ?, ?, ?)', (videoName, videoExtension, duration, FPS, dimensions, step))
+        rowID = db.execute('SELECT last_insert_rowid()').fetchone()[0]
+        for j in range (len(timeArray)):
+            db.execute('INSERT INTO frames (video_id, second, frame, faces) VALUES (?, ?, ?, ?)', (rowID, timeArray[j], frameArray[j], faceArray[j]))
+        db.commit()
 
         return render_template('plot.html', videoName=videoName, duration=duration, FPS=FPS, dimensions=dimensions, step=step, faceArray=faceArray, timeArray=timeArray)
     
