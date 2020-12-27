@@ -18,13 +18,8 @@ html
     margin: 10px 10px;
 }
 
-.home-wrapper {
-    background-color: #303030;
-    width: 80%;
-    max-width: 1000px;
-    margin: 0 auto;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+.main-wrapper {
+    background-color: #404040;
 }
 
 @media screen and (max-width: 640px) {
