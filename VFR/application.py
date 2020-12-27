@@ -11,7 +11,6 @@ import face_recognition, cv2
 from werkzeug.utils import secure_filename
 
 from VFR.db import get_db
-from VFR.helpers import allowed_file
 
 bp = Blueprint('application', __name__)
 

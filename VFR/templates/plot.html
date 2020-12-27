@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Upload
+    Plot
 {% endblock %}
 
 {% block main %}
@@ -14,7 +14,7 @@
     <canvas id="chart" width="400" height="100"></canvas>
     <script>
         var ctx = document.getElementById('chart').getContext('2d');
-        var myChart = new Chart(ctx, {
+        var Chart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: {{ timeArray }},
