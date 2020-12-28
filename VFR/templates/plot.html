@@ -5,36 +5,79 @@
 {% endblock %}
 
 {% block main %}
-    <p>Name: {{ videoName }}</p>
-    <p>Duration: {{ duration }} seconds</p>
-    <p>FPS: {{ FPS }}</p>
-    <p>Dimensions: {{ dimensions }}</p>
-    <p>step: {{ step }}</p>
-    <p>test: {{ test }}</p>
-    <canvas id="chart" width="400" height="100"></canvas>
-    <script>
-        var ctx = document.getElementById('chart').getContext('2d');
-        var Chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: {{ timeArray }},
-                datasets: [{
-                    label: '# of Faces',
-                    data: {{ faceArray }},
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    barPercentage: '1.0',
-                    categoryPercentage: '1.0'
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
+    <table class="table table-hover table-dark table-responsive-sm">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Extension</th>
+                <th scope="col">Duration</th>
+                <th scope="col">FPS</th>
+                <th scope="col">Dimensions</th>
+                <th scope="col">Scan Period</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>{{ videoName }}</th>
+                <th>{{ videoExtension }}</th>
+                <th>{{ duration }} second(s)</th>
+                <th>{{ FPS }}</th>
+                <th>{{ dimensions }}</th>
+                <th>{{ step }} second(s)</th>
+            </tr>
+        </tbody>
+    </table>
+    <div class="plot">
+        <canvas id="chart" width="400" height="100"></canvas>
+        <script>
+            var ctx = document.getElementById('chart').getContext('2d');
+            var Chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: {{ timeArray }},
+                    datasets: [{
+                        label: "# of Faces",
+                        data: {{ faceArray }},
+                        backgroundColor: 'rgba(255, 193, 7, 0.7)',
+                        barPercentage: '1.0',
+                        categoryPercentage: '1.0'
                     }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                labelString: "Faces",
+                                fontColor: "white",
+                                fontSize: 14,
+                                stepSize: 1,
+                                beginAtZero: true
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Faces",
+                                fontSize: 14,
+                                fontColor: "white"
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontColor: "white",
+                                fontSize: 12
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Seconds",
+                                fontSize: 14,
+                                fontColor: "white"
+                            }
+                        }]
+                    }
                 }
-            }
-        });
-    </script>
+            });
+        </script>
+    </div>
 {% endblock %}

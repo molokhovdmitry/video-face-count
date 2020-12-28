@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -20,7 +22,7 @@
     <main class="main-wrapper">
         {% if get_flashed_messages() %}
             <header>
-                <div class="alert alert-primary border text-center" role="alert">
+                <div class="alert alert-danger text-center" role="alert">
                     {{ get_flashed_messages() | join(" ") }}
                 </div>
             </header>
@@ -28,7 +30,6 @@
         
         {% block main %}{% endblock %}
     </main>
-
 </body>
 
 </html>

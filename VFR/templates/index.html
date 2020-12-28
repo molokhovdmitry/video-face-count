@@ -1,21 +1,21 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Video Face Recognition
+  Video Face Recognition
 {% endblock %}
 
 {% block main %}
-    <form action="/" enctype=multipart/form-data method="post">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-            </div>
-            <div class="custom-file">
-              <input name="file" accept=".mp4,.avi" type="file" class="custom-file-input" aria-describedby="inputGroupFileAddon01">
-              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-            </div>
-        </div>
-        <input name="step" type="number" min="1" step="1" value="200">
-        <button class="btn btn-primary" type="submit">Find Faces</button>
-    </form>
+  <form onsubmit="loadingAnimation()" class="form" action="/" enctype=multipart/form-data method="post">
+      <div class="input-group mb-3">
+          <div class="custom-file">
+            <input id="input" onchange="showFileName()" name="file" accept=".mp4,.avi" type="file" class="custom-file-input" aria-describedby="inputGroupFileAddon01">
+            <label id="inputField" class="custom-file-label" for="inputGroupFile01">Choose a Video File</label>
+          </div>
+      </div>
+      <div class="input-group mb-3">
+          <input class="form-control" name="step" type="number" min="1" step="1" placeholder="Enter Scan Period In Seconds">
+      </div>
+      <button class="btn btn-warning" type="submit">Find Faces</button>
+  </form>
+  <div id="loader" class="loader"></div>
 {% endblock %}

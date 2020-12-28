@@ -18,11 +18,6 @@ bp = Blueprint('application', __name__)
 def find():
     if request.method == 'POST':
         db = get_db()
-        
-        # Check if user entered "step"
-        if not request.form.get('step'):
-            flash('Enter "step"')
-            return redirect(request.url)
 
         # Check if user selected a file
         file = request.files['file']
@@ -33,6 +28,11 @@ def find():
         # Check if the filename is allowed
         if not allowed_file(file.filename):
             flash('Wrong file extension')
+            return redirect(request.url)
+        
+        # Check if user entered "step"
+        if not request.form.get('step'):
+            flash('Enter "step"')
             return redirect(request.url)
 
         # Upload file
@@ -117,7 +117,7 @@ def find():
             db.execute('INSERT INTO frames (video_id, second, frame, faces) VALUES (?, ?, ?, ?)', (rowID, timeArray[j], frameArray[j], faceArray[j]))
         db.commit()
 
-        return render_template('plot.html', videoName=videoName, duration=duration, FPS=FPS, dimensions=dimensions, step=step, faceArray=faceArray, timeArray=timeArray)
+        return render_template('plot.html', videoName=videoName, videoExtension=videoExtension, duration=duration, FPS=FPS, dimensions=dimensions, step=step, faceArray=faceArray, timeArray=timeArray)
     
     return render_template('index.html')
 
