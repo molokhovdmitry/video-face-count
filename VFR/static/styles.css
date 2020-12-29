@@ -5,16 +5,36 @@ html > * {
 .header {
     overflow: hidden;
     background-color: #202020;
-    padding: 25px 25px;
+    padding: 10px 25px;
 }
 
 .header a {
+    float: left;
     color: white;
     padding: 10px;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 26px;
     line-height: 25px;
     margin: 10px 10px;
+}
+
+.header-right {
+    float: right;
+}
+
+.header-right a {
+    padding: 10px;
+    font-size: 18px;
+}
+
+.header-right a:hover {
+    background-color: #ffc107;
+    color: black;
+}
+
+.header-right .active {
+    background-color: #ffc107;
+    color: black;
 }
 
 .main-wrapper {
@@ -58,8 +78,14 @@ html > * {
 }
 
 @media screen and (max-width: 640px) {
-    .header {
+    .header a {
+        display: block;
+        float: none;
         text-align: center;
+    }
+
+    .header-right {
+        float: none;
     }
     
     .home-wrapper {

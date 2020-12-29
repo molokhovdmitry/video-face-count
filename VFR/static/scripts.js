@@ -8,3 +8,11 @@ function showFileName() {
 function loadingAnimation() {
 document.getElementById('loader').style.display = "block";
 }
+
+// Active nav button
+document.addEventListener("DOMContentLoaded", function() {
+  const path = window.location.pathname;
+  if (path == "/about") {
+    document.getElementById("about").classList.add("active");
+  }
+});
