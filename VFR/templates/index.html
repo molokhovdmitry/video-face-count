@@ -9,13 +9,13 @@
       <div class="input-group mb-3">
           <div class="custom-file">
             <input id="input" onchange="showFileName()" name="file" accept=".mp4,.avi" type="file" class="custom-file-input" aria-describedby="inputGroupFileAddon01">
-            <label id="inputField" class="custom-file-label" for="inputGroupFile01">Choose a Video File</label>
+            <label id="inputField" class="custom-file-label" for="inputGroupFile01">Choose <strong>.mp4</strong> or <strong>.avi</strong> video file</label>
           </div>
       </div>
       <div class="input-group mb-3">
-          <input class="form-control" name="step" type="number" min="1" step="1" placeholder="Enter Scan Period In Seconds">
+          <input class="form-control" name="step" type="number" min="1" step="1" placeholder="Enter scan period in seconds">
       </div>
-      <button class="btn btn-warning" type="submit">Find Faces</button>
+      <button class="btn btn-warning" type="submit">Make a Plot</button>
   </form>
   <div id="loader" class="loader"></div>
 {% endblock %}

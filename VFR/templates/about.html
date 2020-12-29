@@ -5,5 +5,33 @@
 {% endblock %}
 
 {% block main %}
-    <p>123</p>
+  <div class="about">
+    <h2>About</h2>
+    <p>
+      This web application scans video frames for faces with a specified period of time
+      and makes a plot with that data.
+    </p>
+    <h2>How To Use</h2>
+    <p>
+      1. Upload a video file with <span>.mp4</span> or <span>.avi</span> file format.
+    </p>
+    <p class="commentary">
+      <em>Higher resolution videos are processed slower.</em>
+    </p>
+    <p>
+      2. Enter a scan period with which a video frame is scanned.
+    </p>
+    <p class="commentary">
+      <em>Application always starts with scanning the first frame.</em>
+    </p>
+    <p>
+      3. Press the "Make a Plot" button to start.      
+    </p>
+    <p class="commentary">
+      <em>Processing can take a while.</em>
+    </p>
+    <h2>Example with this <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">video</a></h2>
+    <img src="../static/images/exampleForm.png" class="img-fluid" alt="Form example">
+    <img src="../static/images/examplePlot.png" class="img-fluid" alt="Plot example">
+  </div>
 {% endblock %}

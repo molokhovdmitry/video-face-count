@@ -1,10 +1,10 @@
 html > * {
-    background: #404040;
+    background: #202020;
 }
 
 .header {
     overflow: hidden;
-    background-color: #202020;
+    background-color: #404040;
     padding: 10px 25px;
 }
 
@@ -15,7 +15,7 @@ html > * {
     text-decoration: none;
     font-size: 26px;
     line-height: 25px;
-    margin: 10px 10px;
+    margin: 10px 0px;
 }
 
 .header-right {
@@ -75,6 +75,29 @@ html > * {
 
 .custom-file-label {
     text-align: left;
+}
+
+.about {
+    padding: 0px 25px 40px;
+    color: #fffffa;
+}
+
+.about h2 {
+    padding: 25px 0px 15px
+}
+
+.about p {
+    font-size: 14pt;
+}
+
+.about p span {
+    color: #ffc107;
+}
+
+.about .commentary {
+    color: #bbbbb6;
+    font-size: 13pt;
+    margin-top: -10px;
 }
 
 @media screen and (max-width: 640px) {
