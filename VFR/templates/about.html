@@ -11,7 +11,11 @@
       This web application scans video frames for faces with specified periods of time
       and makes a plot with that data.
     </p>
-    <p><a class="badge badge-warning" href="https://github.com/molokhovdmitry/video-face-amount-recognition-web"><img src="../static/images/github-logo.png">GitHub</a></p>
+    <p>
+      <a class="badge badge-warning" href="https://github.com/molokhovdmitry/video-face-amount-recognition-web">
+      <img src="{{ url_for('static', filename='images/github-logo.png') }}">GitHub
+      </a>
+    </p>
     <h2>How To Use</h2>
     <p>
       1. Upload a video file with <span>.mp4</span> or <span>.avi</span> file format.
@@ -78,7 +82,6 @@
             data: {
                 labels: {{ timeExample }},
                 datasets: [{
-                    label: "# of Faces",
                     data: {{ [0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 
                               0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 
                               1, 1, 0, 2, 1, 2, 0, 1, 2, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 
@@ -140,13 +143,41 @@
     </p>
     <h2>Made with</h2>
     <div class="links">
-      <p><a class="badge badge-warning" href="https://github.com/ageitgey/face_recognition"><img src="../static/images/github-logo.png">ageitgey/face_recognition</a></p>
-      <p><a class="badge badge-warning" href="https://opencv.org/"><img src="../static/images/opencv-logo.png">OpenCV</a></p>
-      <p><a class="badge badge-warning" href="https://ffmpeg.org/"><img src="../static/images/ffmpeg-logo.png">FFmpeg</a></p>
-      <p><a class="badge badge-warning" href="https://flask.palletsprojects.com/"><img src="../static/images/flask-logo.png">Flask</a></p>
-      <p><a class="badge badge-warning" href="https://getbootstrap.com/"><img src="../static/images/bootstrap-logo.svg">Bootstrap</a></p>
-      <p><a class="badge badge-warning" href="https://www.chartjs.org/"><img src="../static/images/chartjs-logo.svg">Chart.js</a></p>
-      <p><a class="badge badge-warning" href="https://www.sqlite.org/index.html"><img src="../static/images/sqlite-logo.png">Sqlite</a></p>
+      <p>
+        <a class="badge badge-warning" href="https://github.com/ageitgey/face_recognition">
+          <img src="{{ url_for('static', filename='images/github-logo.png') }}">ageitgey/face_recognition
+        </a>
+      </p>
+      <p>
+        <a class="badge badge-warning" href="https://opencv.org/">
+          <img src="{{ url_for('static', filename='images/opencv-logo.png') }}">OpenCV
+        </a>
+      </p>
+      <p>
+        <a class="badge badge-warning" href="https://ffmpeg.org/">
+          <img src="{{ url_for('static', filename='images/ffmpeg-logo.png') }}">FFmpeg
+        </a>
+      </p>
+      <p>
+        <a class="badge badge-warning" href="https://flask.palletsprojects.com/">
+          <img src="{{ url_for('static', filename='images/flask-logo.png') }}">Flask
+        </a>
+      </p>
+      <p>
+        <a class="badge badge-warning" href="https://getbootstrap.com/">
+          <img src="{{ url_for('static', filename='images/bootstrap-logo.svg') }}">Bootstrap
+        </a>
+      </p>
+      <p>
+        <a class="badge badge-warning" href="https://www.chartjs.org/">
+          <img src="{{ url_for('static', filename='images/chartjs-logo.svg') }}">Chart.js
+        </a>
+      </p>
+      <p>
+        <a class="badge badge-warning" href="https://www.sqlite.org/index.html">
+          <img src="{{ url_for('static', filename='images/sqlite-logo.png') }}">Sqlite
+        </a>
+      </p>
     </div>
   </div>
 {% endblock %}
