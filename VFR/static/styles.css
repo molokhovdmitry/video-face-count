@@ -104,10 +104,36 @@ html > * {
     margin-top: -10px;
 }
 
+.about p img {
+    margin-right: 10px;
+    width: 32px;
+    height: 32px;
+}
+
 .form-example {
     min-width: unset;
     width: 100%;
 }
+
+.about p a:hover {
+    background-color: #ffbf00;
+    color: rgb(27, 27, 27);
+}
+
+.badge-warning {
+    background-color: #e0a800;
+    color: rgb(14, 13, 13);
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.links p {
+    padding-right: 10px;
+}
+
 @media screen and (max-width: 640px) {
     .header a {
         display: block;
@@ -130,6 +156,6 @@ html > * {
     }
     
     .about {
-        width: 90%;
+        width: 100%;
     }
 }

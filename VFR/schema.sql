@@ -8,7 +8,7 @@ CREATE TABLE videos (
     duration INTEGER NOT NULL,
     FPS INTEGER NOT NULL,
     dimensions TEXT NOT NULL,
-    step INTEGER NOT NULL
+    scanPeriod INTEGER NOT NULL
 );
 
 CREATE TABLE frames (

@@ -8,9 +8,10 @@
   <div class="about">
     <h2>About</h2>
     <p>
-      This web application scans video frames for faces with a specified period of time
+      This web application scans video frames for faces with specified periods of time
       and makes a plot with that data.
     </p>
+    <p><a class="badge badge-warning" href="https://github.com/molokhovdmitry/video-face-amount-recognition-web"><img src="../static/images/github-logo.png">GitHub</a></p>
     <h2>How To Use</h2>
     <p>
       1. Upload a video file with <span>.mp4</span> or <span>.avi</span> file format.
@@ -49,22 +50,22 @@
   <table class="table table-hover table-dark table-responsive-sm">
     <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Extension</th>
-            <th scope="col">Duration</th>
-            <th scope="col">FPS</th>
-            <th scope="col">Dimensions</th>
-            <th scope="col">Scan Period</th>
+          <th scope="col">Name</th>
+          <th scope="col">Extension</th>
+          <th scope="col">Duration</th>
+          <th scope="col">FPS</th>
+          <th scope="col">Dimensions</th>
+          <th scope="col">Scan Period</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <th>giveup</th>
-            <th>mp4</th>
-            <th>212 second(s)</th>
-            <th>25</th>
-            <th>1280×720</th>
-            <th>1 second(s)</th>
+          <th>giveup</th>
+          <th>mp4</th>
+          <th>212 second(s)</th>
+          <th>25</th>
+          <th>1280×720</th>
+          <th>1 second(s)</th>
         </tr>
     </tbody>
   </table>
@@ -129,5 +130,23 @@
             }
         });
     </script>
-</div>
+  </div>
+  <div class="about">
+    <h2>Privacy</h2>
+    <p>
+      Any file you upload/process is deleted from the server instantly after plot completion, 
+      but the following information is saved on the database: filename, extension, duration, frames per second, dimensions, scan period 
+      of the video file.
+    </p>
+    <h2>Made with</h2>
+    <div class="links">
+      <p><a class="badge badge-warning" href="https://github.com/ageitgey/face_recognition"><img src="../static/images/github-logo.png">ageitgey/face_recognition</a></p>
+      <p><a class="badge badge-warning" href="https://opencv.org/"><img src="../static/images/opencv-logo.png">OpenCV</a></p>
+      <p><a class="badge badge-warning" href="https://ffmpeg.org/"><img src="../static/images/ffmpeg-logo.png">FFmpeg</a></p>
+      <p><a class="badge badge-warning" href="https://flask.palletsprojects.com/"><img src="../static/images/flask-logo.png">Flask</a></p>
+      <p><a class="badge badge-warning" href="https://getbootstrap.com/"><img src="../static/images/bootstrap-logo.svg">Bootstrap</a></p>
+      <p><a class="badge badge-warning" href="https://www.chartjs.org/"><img src="../static/images/chartjs-logo.svg">Chart.js</a></p>
+      <p><a class="badge badge-warning" href="https://www.sqlite.org/index.html"><img src="../static/images/sqlite-logo.png">Sqlite</a></p>
+    </div>
+  </div>
 {% endblock %}

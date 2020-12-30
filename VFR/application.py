@@ -30,9 +30,9 @@ def find():
             flash('Wrong file extension')
             return redirect(request.url)
         
-        # Check if user entered "step"
-        if not request.form.get('step'):
-            flash('Enter "step"')
+        # Check if user entered "scanPeriod"
+        if not request.form.get('scanPeriod'):
+            flash('Enter "Scan period"')
             return redirect(request.url)
 
         # Upload file
@@ -48,8 +48,8 @@ def find():
         # Load the video (OpenCV)
         video = cv2.VideoCapture(path)
 
-        # Get "step"
-        step = int(request.form.get('step'))
+        # Get "scanPeriod"
+        scanPeriod = int(request.form.get('scanPeriod'))
         
         # Get metadata and check if the file is corrupted
         try:
@@ -79,9 +79,9 @@ def find():
         
         # Iterate over frames
         while True:
-            # Skip "FPS * step" frames
-            if (i % (FPS * step) != 0) or i != 0:
-                for k in range(int((FPS * step) - 1)):
+            # Skip "FPS * scanPeriod" frames
+            if (i % (FPS * scanPeriod) != 0) or i != 0:
+                for k in range(int((FPS * scanPeriod) - 1)):
                     i += 1
                     if not video.grab():
                         break
@@ -111,13 +111,13 @@ def find():
             faceArray.append(faceAmount)
 
         # Insert into database
-        db.execute('INSERT INTO videos (name, extension, duration, FPS, dimensions, step) VALUES (?, ?, ?, ?, ?, ?)', (videoName, videoExtension, duration, FPS, dimensions, step))
+        db.execute('INSERT INTO videos (name, extension, duration, FPS, dimensions, scanPeriod) VALUES (?, ?, ?, ?, ?, ?)', (videoName, videoExtension, duration, FPS, dimensions, scanPeriod))
         rowID = db.execute('SELECT last_insert_rowid()').fetchone()[0]
         for j in range (len(timeArray)):
             db.execute('INSERT INTO frames (video_id, second, frame, faces) VALUES (?, ?, ?, ?)', (rowID, timeArray[j], frameArray[j], faceArray[j]))
         db.commit()
 
-        return render_template('plot.html', videoName=videoName, videoExtension=videoExtension, duration=duration, FPS=FPS, dimensions=dimensions, step=step, faceArray=faceArray, timeArray=timeArray)
+        return render_template('plot.html', videoName=videoName, videoExtension=videoExtension, duration=duration, FPS=FPS, dimensions=dimensions, scanPeriod=scanPeriod, faceArray=faceArray, timeArray=timeArray)
     
     return render_template('index.html')
 
