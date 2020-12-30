@@ -78,7 +78,11 @@ html > * {
 }
 
 .about {
-    padding: 0px 25px 40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    text-align: left;
+    padding: 0px 25px 5px;
     color: #fffffa;
 }
 
@@ -100,6 +104,10 @@ html > * {
     margin-top: -10px;
 }
 
+.form-example {
+    min-width: unset;
+    width: 100%;
+}
 @media screen and (max-width: 640px) {
     .header a {
         display: block;
@@ -121,4 +129,7 @@ html > * {
         min-width: unset;
     }
     
+    .about {
+        width: 90%;
+    }
 }

@@ -123,7 +123,8 @@ def find():
 
 @bp.route("/about")
 def about():
-    return render_template("about.html")
+    timeExample = list(range(213))
+    return render_template("about.html", timeExample=timeExample)
 
 # Function for file extension checking
 ALLOWED_EXTENSIONS = {'mp4', 'avi'}
