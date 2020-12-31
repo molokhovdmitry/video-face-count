@@ -1,1 +1,1 @@
-web: flask init-db; gunicorn VFCWeb:app --log-file -
+web: flask init-db; gunicorn VFC:app --log-file -
