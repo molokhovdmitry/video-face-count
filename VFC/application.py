@@ -10,7 +10,7 @@ import ffmpeg
 import face_recognition, cv2
 from werkzeug.utils import secure_filename
 
-from VFR.db import get_db
+from VFC.db import get_db
 
 bp = Blueprint('application', __name__)
 

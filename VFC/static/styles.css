@@ -8,6 +8,10 @@ html > * {
     padding: 10px 25px;
 }
 
+.header .logo {
+    color: #ffc107;
+}
+
 .header a {
     float: left;
     color: white;

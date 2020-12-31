@@ -1,4 +1,4 @@
-include VFR/schema.sql
+include VFC/schema.sql
 graft flaskr/static
 graft flaskr/templates
 global-exclude *.pyc

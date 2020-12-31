@@ -8,8 +8,8 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'VFR.sqlite'),
-        UPLOAD_FOLDER='VFR/temp',
+        DATABASE=os.path.join(app.instance_path, 'VFC.sqlite'),
+        UPLOAD_FOLDER='VFC/temp',
     )
 
     if test_config is None:
