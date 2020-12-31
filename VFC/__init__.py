@@ -12,12 +12,8 @@ def create_app(test_config=None):
         UPLOAD_FOLDER='VFC/temp',
     )
 
-    if test_config is None:
-        # Load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        # Load the test config if passed in
-        app.config.from_mapping(test_config)
+    # Load the instance config
+    app.config.from_pyfile('config.py', silent=True)
 
     # Ensure the instance folder exists
     try:
