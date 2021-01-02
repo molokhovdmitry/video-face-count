@@ -1,0 +1,1 @@
+web: gunicorn 'VFC:create_app("production")'
