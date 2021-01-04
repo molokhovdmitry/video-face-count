@@ -108,7 +108,7 @@ html > * {
     margin-top: -10px;
 }
 
-#warning {
+.about #warning {
     color: #ff0f0f;
     margin-top: 20px;
 }
