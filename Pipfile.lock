@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "549a845dcfa4df02ad8452a86de1c2be8ea2c05e8fe3ad7c533690fe204624bc"
+            "sha256": "5040681ce46283aa96ddfe9e135e31259f57fb6095a902426853825648d052be"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -103,6 +103,13 @@
             ],
             "index": "pypi",
             "version": "==0.2.0"
+        },
+        "ffprobe": {
+            "hashes": [
+                "sha256:f7dc048df62c6ccc1c602c865a7f0976b2679200fd07ebdc34ce51e9a8205b76"
+            ],
+            "index": "pypi",
+            "version": "==0.5"
         },
         "filelock": {
             "hashes": [
