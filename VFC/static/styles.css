@@ -108,6 +108,11 @@ html > * {
     margin-top: -10px;
 }
 
+#warning {
+    color: #ff0f0f;
+    margin-top: 20px;
+}
+
 .about p img {
     margin-right: 10px;
     width: 32px;

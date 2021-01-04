@@ -11,6 +11,13 @@
       This web application scans video frames for faces with specified periods of time and counts them.
       Then it shows the data in a plot.
     </p>
+    <p id="warning" class="commentary warning">
+      <em>
+        Heroku requests are limited to 30 seconds, so processing is possible only with
+        short, low resolution video files and with a high scan period. Download the project to use
+        the application without limitations.
+      </em>
+    </p>
     <p>
       <a class="badge badge-warning" href="https://github.com/molokhovdmitry/video-face-amount-recognition-web">
       <img src="{{ url_for('static', filename='images/github-logo.png') }}">GitHub

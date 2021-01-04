@@ -48,15 +48,19 @@ def find():
         # Get "scanPeriod"
         scanPeriod = int(request.form.get('scanPeriod'))
         
-        # Get metadata and check if the file is corrupted
-        videoName = file.filename.rsplit(".")[0]
-        videoExtension = file.filename.rsplit(".")[1]
-        FPS = int(video.get(cv2.CAP_PROP_FPS))
-        duration = str(round(float(ffmpeg.probe(path)['streams'][0]['duration'])))
-        width = ffmpeg.probe(path)['streams'][0]['width']
-        height = ffmpeg.probe(path)['streams'][0]['height']
-        dimensions = str(width) + "×" + str(height)
-        
+        try:
+            # Get metadata and check if the file is corrupted
+            videoName = file.filename.rsplit(".")[0]
+            videoExtension = file.filename.rsplit(".")[1]
+            FPS = int(video.get(cv2.CAP_PROP_FPS))
+            duration = str(round(float(ffmpeg.probe(path)['streams'][0]['duration'])))
+            width = ffmpeg.probe(path)['streams'][0]['width']
+            height = ffmpeg.probe(path)['streams'][0]['height']
+            dimensions = str(width) + "×" + str(height)
+        except:
+            os.remove(path)
+            flash('Corrupted file')
+            return redirect(request.url)
 
         # Delete video file
         os.remove(path)
