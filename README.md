@@ -1,5 +1,7 @@
 # video-face-count
-```git clone https://github.com/molokhovdmitry/video-face-amount-recognition-web```
+```
+git clone https://github.com/molokhovdmitry/video-face-amount-recognition-web
+```
 `cd video-face-amount-recognition-web`
 `pip install -r requirements.txt`
 `sudo apt-get ffmpeg`
