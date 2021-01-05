@@ -10,7 +10,7 @@ Install ffmpeg:
 ```
 sudo apt-get ffmpeg
 ```
-Install the project if you want so you can call it from anywhere.
+If you want you can install the project so it is possible to call it from anywhere.
 ```
 pip install -e .
 ```
@@ -19,7 +19,7 @@ Launch:
 export FLASK_APP=VFC
 flask run
 ```
-
+Go to `http://127.0.0.1:5000/`
 Buildpacks:
 heroku/python
 https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
