@@ -1,6 +1,9 @@
 # video-face-count
 
+https://video-face-count.herokuapp.com/about
+
 ## Installation
+
 ### Clone the repository and install the requirements:
 ```
 git clone https://github.com/molokhovdmitry/video-face-amount-recognition-web
@@ -11,7 +14,7 @@ pip install -r requirements.txt
 ```
 sudo apt-get ffmpeg
 ```
-If you want you can install the project so it is possible to call it from anywhere.
+If you want you can install the application so it is possible to call it from anywhere.
 ```
 pip install -e .
 ```
