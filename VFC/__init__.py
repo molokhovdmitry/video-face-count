@@ -7,7 +7,7 @@ def create_app(test_config=None):
     # Create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY='dev',
+        SECRET_KEY='2?H.66J#6K[P!dV&',
         UPLOAD_FOLDER='VFC/temp',
     )
 
