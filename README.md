@@ -1,6 +1,7 @@
 # video-face-count
+
 ## Installation
-Clone the repository and install requirements:
+Clone the repository and install the requirements:
 ```
 git clone https://github.com/molokhovdmitry/video-face-amount-recognition-web
 cd video-face-amount-recognition-web
@@ -20,6 +21,9 @@ export FLASK_APP=VFC
 flask run
 ```
 Go to `http://127.0.0.1:5000/`
-Buildpacks:
+
+Buildpacks for heroku deployment:
+```
 heroku/python
 https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
+```
