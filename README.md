@@ -12,7 +12,7 @@ pip install -r requirements.txt
 ```
 ### Install ffmpeg:
 ```
-sudo apt-get ffmpeg
+sudo apt-get install ffmpeg
 ```
 If you want you can install the application so it is possible to call it from anywhere.
 ```
