@@ -1,5 +1,5 @@
 # video-face-count
-
+This is my cs50x final project.
 https://video-face-count.herokuapp.com/about
 
 ## Installation
