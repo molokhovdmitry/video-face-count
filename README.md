@@ -1,6 +1,12 @@
 # video-face-count
-This is my cs50x final project.  
-https://video-face-count.herokuapp.com/about
+This is my cs50x final project.
+This **Flask** web application uses [ageitgey/face_recognition](https://github.com/ageitgey/face_recognition) library on video frames using a specified scan period. The results are then displayed in a plot.
+
+## Example with this [video](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+### Input
+![input](images/input.png)
+### Output
+![output](images/output.png)
 
 ## Installation
 
@@ -8,7 +14,11 @@ https://video-face-count.herokuapp.com/about
 ```
 git clone https://github.com/molokhovdmitry/video-face-count
 cd video-face-count
+conda create --name vfc python=3.8
+conda activate vfc
 pip install -r requirements.txt
+conda env config vars set FLASK_APP=VFC
+conda deactivate && conda activate
 ```
 ### Install ffmpeg:
 ```
@@ -20,7 +30,6 @@ pip install -e .
 ```
 ### Launch:
 ```
-export FLASK_APP=VFC
 flask run
 ```
 Go to http://127.0.0.1:5000/
